@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "A simple wiki system using markdown files and directories",
   "main": "index.js",
-  "directories": {
-    "test": "test"
+  "directories": { },
+  "dependencies": {
+    "fs-extra": "5.0.0",
+    "glob": "7.1.2",
+    "markdown": "0.5.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "common-readme": "^1.1.0",
     "dependency-check": "^3.1.0",
@@ -21,8 +23,9 @@
     "url": "https://github.com/jayrbolton/notable.git"
   },
   "scripts": {
-    "test": "dependency-check package.json && standard && node test/",
-    "preversion": "npm run test",
+    "build": "npm run lint && (rm -rf docs/*) && node index.js",
+    "lint": "dependency-check package.json && standard",
+    "preversion": "npm run lint",
     "postversion": "git push && git push --tags"
   },
   "keywords": [],

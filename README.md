@@ -2,48 +2,16 @@
 
 > A simple wiki system using markdown files and directories
 
-background details relevant to understanding what this module does
+This is a simple wiki-like static site generator using a directory tree of markdown files.
 
 ## Usage
 
-```js
-var notable = require('notable')
+- Fork this repo 
+- Create markdown files and directories in /content.
+- Run `npm run build`
 
-console.log('hello warld')
-```
-
-outputs
-
-```
-hello warld
-```
-
-## API
-
-```js
-var notable = require('notable')
-```
-
-See [api_formatting.md](api_formatting.md) for tips.
-
-## Install
-
-With [npm](https://npmjs.org/) installed, run
-
-```
-$ npm install notable
-```
-
-## Acknowledgments
-
-notable was inspired by..
-
-## See Also
-
-- [`noffle/common-readme`](https://github.com/noffle/common-readme)
-- ...
+Static HTML files are built to the /docs folder using the same directory structure as in /content. /docs is easy to serve with github pages from a repo's settings page.
 
 ## License
 
 MIT
-
