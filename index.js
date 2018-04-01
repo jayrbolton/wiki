@@ -15,28 +15,43 @@ const head = `<!doctype html><html><head><title>${conf.title}</title><link rel='
 const uplink = `<a href='../'>^ Up</a>`
 const footer = `</body></html>`
 
-glob('content/**/*.md', function (err, files) {
+glob('content/**/*', function (err, files) {
   if (err) throw err
   files.forEach(function (inPath) {
-    const dir = path.dirname(inPath)
-    const outDir = dir.replace(/^content/, 'docs')
-    const name = path.basename(inPath, '.md')
-    fs.readFile(inPath, 'utf-8', function (err, contents) {
+    const ext = path.extname(inPath)
+    const outDir = path.dirname(inPath).replace(/^content/, 'docs')
+    if (ext === 'md') {
+      compileMarkdown(inPath, outDir)
+    } else {
+      copyAsset(inPath, outDir)
+    }
+  })
+})
+
+function copyAsset (inPath, outDir) {
+  fs.copy(inPath, outDir + '/' + path.basename(inPath), function (err) {
+    if (err) throw err
+  })
+}
+
+function compileMarkdown (inPath, outDir) {
+  const name = path.basename(inPath, '.md')
+  const inDir = path.dirname(inPath)
+  fs.readFile(inPath, 'utf-8', function (err, contents) {
+    if (err) throw err
+    let html = head + markdown.toHTML(contents)
+    if (inDir !== 'content') {
+      html += uplink
+    }
+    html += footer
+    fs.ensureDir(outDir, function (err) {
       if (err) throw err
-      let html = head + markdown.toHTML(contents)
-      if (dir !== 'content') {
-        html += uplink
-      }
-      html += footer
-      fs.ensureDir(outDir, function (err) {
+      fs.writeFile(outDir + '/' + name + '.html', html, function (err) {
         if (err) throw err
-        fs.writeFile(outDir + '/' + name + '.html', html, function (err) {
-          if (err) throw err
-        })
       })
     })
   })
-})
+}
 
 fs.copy('./index.css', './docs/index.css', function (err) {
   if (err) throw err

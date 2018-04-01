@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A simple wiki system using markdown files and directories",
   "main": "index.js",
-  "directories": { },
+  "directories": {},
   "dependencies": {
     "fs-extra": "5.0.0",
     "glob": "7.1.2",
