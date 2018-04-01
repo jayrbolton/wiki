@@ -1,0 +1,21 @@
+<!doctype html><html><head><title>jayrbolton wiki</title><link rel='stylesheet' type='text/css' href='/index.css'></head><body><h1>Understanding Types</h1>
+
+<p><a href="http://lucacardelli.name/Papers/OnUnderstanding.A4.pdf">Paper link</a></p>
+
+<p>One of the best papers on types systems due to it thoroughness. There are many subtle points in this paper that I didn&#39;t entirely get, and it will be worth re-reading in the future.</p>
+
+<p>Universal quantification over a type <code>for_all a. fun (x: a) x</code> means that x can bind to any/all types. The function has two parameters at two levels: the type and value levels. You call it explicitly with something like <code>fun [Int] (10)</code>.</p>
+
+<p>There is a difference between type parameterization (<code>A [T] = T -&gt; T</code>) vs universal quantification (<code>A = for_all T. T -&gt; T</code>)</p>
+
+<p>It&#39;s very hard to pin down the exact meaning of existential type quantifiers. They allow you to further abstract a type. For example, you may have <code>ArrayQueue[Int]</code> and <code>ListQueue[Int]</code> where you&#39;ve universally quantified the type of the queue elements. You can further abstract the implementation of the queue (Array or List), by using an existential quantifier</p>
+
+<p>There is a nice treatment of record types and subtyping without using explicit inheritance, which I think is something that plagues most all OO languages. You can extend an existing record type and expand its properties. You can have an explicit type check for <code>a &lt;= b</code>, which means a must have all the keys from <code>b</code>, but may have extras. You can bind a record type to a name with univ. quant. like <code>for_all a &lt;= {one: Int}. a -&gt; Int</code>.</p>
+
+<p>Importantly, bounded univ. quantification on record types allows you to express more information about a function&#39;s type.</p>
+
+<p>Say you have a type point: <code>{x: Real, y: Real}</code>, and you have a type Circle <code>{x: Real, y: Real, radius: Real}</code>.</p>
+
+<p>Now say you have a funciton type to move a point: <code>Point -&gt; Real -&gt; Point</code>. You can pass either a Point or a Circle as they both have <code>x</code> and <code>y</code> keys. However, if you pass a Circle, you may not get a Circle back; you may just get a Point back with no <code>radius</code> key.</p>
+
+<p>Instead you can bind the type like: <code>movePoint = for_all P &lt;= Point; P -&gt; Real -&gt; P</code>. Now you can have <code>movePoint[Circle]</code>, and your return type also must be a Circle, enforced by the type system.</p><a href='../'>^ Up</a></body></html>

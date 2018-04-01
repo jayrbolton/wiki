@@ -20,9 +20,9 @@ glob('content/**/*', function (err, files) {
   files.forEach(function (inPath) {
     const ext = path.extname(inPath)
     const outDir = path.dirname(inPath).replace(/^content/, 'docs')
-    if (ext === 'md') {
+    if (ext === '.md') {
       compileMarkdown(inPath, outDir)
-    } else {
+    } else if (ext) {
       copyAsset(inPath, outDir)
     }
   })

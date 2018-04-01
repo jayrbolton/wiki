@@ -1,13 +1,16 @@
 body {
-    max-width: 900px;
-    padding: 20px;
+  max-width: 900px;
+  padding: 20px;
 }
 * {
-    font-family: sans;
+  font-family: sans;
 }
 code {
-    font-family: monospace;
-    background: #f8f8f8;
-    padding: 0.2em;
-    white-space: pre;
+  font-family: monospace;
+  background: #f8f8f8;
+  padding: 0.2em;
+  white-space: pre;
+}
+img {
+  max-width: 900px;
 }

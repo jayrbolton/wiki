@@ -1,0 +1,54 @@
+<!doctype html><html><head><title>jayrbolton wiki</title><link rel='stylesheet' type='text/css' href='/index.css'></head><body><h1>Notes on Serious Cryptography</h1>
+
+<p><a href="https://nostarch.com/seriouscrypto">Book link</a></p>
+
+<p>One-time pad: take a different random number for every character in the plaintext</p>
+
+<p>Attack acronyms, for reference:</p>
+
+<ul><li>COA - cipher-text only</li><li>KPA - Known plaintext attack (they have a sample of associated plaintexts and ciphertexts)</li><li>CPA - Chosen-plaintext attack (they can control the plaintexts)</li><li>CCA - Chosen-ciphertext attack (they can both encrypt and decrypt)</li></ul>
+
+<p>TODO find more examples for indistinguishability and malleability</p>
+
+<p>The one-time pad is malleable</p>
+
+<p>TODO research malleability more</p>
+
+<h2>Fully homomorphic encryption</h2>
+
+<p>One interesting topic is: <em>fully homomorphic encryption</em>. </p>
+
+<ul><li>A system encrypts and stores a text P with C = E(K, P)</li><li>That encryption could happen on the client side -- the system never sees P</li><li>The system can then compute C&#39;= E(K, F(P)) where F is some modification of P without ever having to decrypt C.</li></ul>
+
+<p>Apparently this type of encryption is possible but still too slow to be practical.</p>
+
+<p>A related topic is to make ciphertexts searchable without decrypting them. Unclear how feasible this is.</p>
+
+<h1>Randomness</h1>
+
+<blockquote><p>Entropy is the measure of uncertainty or disorder in a system.</p></blockquote>
+
+<p>The entropy is <code>p_1 * log(p_1) - p_2 * log(p_2) - ... p_n * log(p_n)</code>
+Each <code>p</code> in the above is the probability for each bit -- your &quot;probability distribution&quot;.
+In a binary string with uniform probability distribution (ie. each bit has equal probability), then each <code>p</code> is equal to <code>2^-128</code> where 128 is the lengthe of the string.
+With this uniform probability, the entropy will always have <code>128</code>, or whatever the length of the bits is.</p>
+
+<p>An entropy equal to the lenth of the string says the distribution is uniform.</p>
+
+<p>When a system does not have uniform probability (ie a coin where heads is <code>1/10</code> and tails is <code>9/10</code>) then you will have an entropy less than the length of the string (ie. 0.469).</p>
+
+<h2>Random-number generators</h2>
+
+<p>These take input from the analog outside world to generate random data -- acoustic noise, static electricity, air turbulence, temperature, operating system I/O, etc.</p>
+
+<p><em>Real randomness</em> can come from quantum sources: photon polarization, vacuum fluctuations, radioactive decay. This is bizzarre. If randomness just means a high amount of unpredictability, that implies all systems are nevertheless potentially predictable, given enough time, data, and models -- then how could real randomness ever exist?</p>
+
+<h2>Pseudo-random generators</h2>
+
+<p>These take short random bits from RNGs and use them to expand a longer stream.</p>
+
+<p>There are non-cryptographic PRNGs which are mainly used for simulations and video games; their main concern is the quality of the bits&#39; probability distribution but may be predictable, so are not good for cryptography.</p>
+
+<p>something like pi is a good PRNG because it has no patterns -- new digits are unpredictable. However it is not a RNG because it is deterministic.</p>
+
+<p>TODO implement mersenne twister in JS</p><a href='../'>^ Up</a></body></html>
