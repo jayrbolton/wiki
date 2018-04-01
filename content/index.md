@@ -6,7 +6,7 @@ This is my small personal knowledgebase that includes note-taking, references, l
 
 ## Studying & Note-taking
 
-* [Computer science](/computation)
+* [Computer science](computation)
 * Natural sciences
-    * [biology](/natural-sciences/biology)
-    * [chemistry](/natural-sciences/chemistry)
+    * [biology](natural-sciences/biology)
+    * [chemistry](natural-sciences/chemistry)
