@@ -11,8 +11,20 @@ const conf = require('./content/config.json') || {}
 // Copy style/index.css to docs/index.css
 // All generated HTML files should link this css file
 
-const pathPrefix = conf.pathPrefix || ''
-const head = `<!doctype html><html><head><title>${conf.title}</title><link rel='stylesheet' type='text/css' href='${pathPrefix}/index.css'></head><body>`
+const head = `
+<!doctype html>
+<html>
+<head>
+  <title>${conf.title}</title>
+  <style>
+    * { font-family: sans; }
+    body {
+      padding: 2rem;
+      background-color: #f8f8f8;
+    }
+  </style>
+</head>
+<body>`
 const uplink = `<a href='../'>^ Up</a>`
 const footer = `</body></html>`
 
