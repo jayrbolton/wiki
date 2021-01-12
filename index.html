@@ -141,6 +141,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>&quot;Skirmish&quot; - a chess variant</li>
+
 <li>$:/config/AutoSave</li>
 
 <li>$:/config/DownloadSaver/AutoSave</li>
@@ -277,6 +279,60 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20210112062128484" modified="20210112063116366" tags="" title="&quot;Skirmish&quot; - a chess variant">
+<pre>These rules are still a work in progress and need more play-testing.
+
+Required equipment:
+
+# Chess board and standard pieces
+
+
+Start:
+
+# Take turns placing all 8 pawns anywhere on the board
+# Take turns placing your kings anywhere on the board
+# Place all other pieces to the side (the “draw pile”)
+
+Turns:
+
+*  Each player can take four “actions” in a turn
+* Note: “adjacent” includes both orthogonal and diagonal. Otherwise, “orthogonally adjacent” or “diagonally adjacent” will be specified.
+* A single action is one of the following:
+** Any piece can move one square adjacently
+** The king (the “manager”) can
+*** summon a piece from the draw pile to an adjacent square
+*** heal an adjacent piece
+*** attack an adjacent piece
+** The queen (the “leader”) can
+*** pull along an orthogonally adjacent piece any number of orthogonal squares in the opposite direction
+** The rook (the “archer”) can
+*** attack a piece in orthogonal directions, any number of squares away
+*** attack over its own pawn or any disabled piece
+** The bishop (the “healer”) can
+*** heal any disabled piece in an orthogonal direction any amount of squares away
+*** heal over its own pawn or any disabled piece
+** The knight (the “charging cavalry”) can
+*** move any amount of squares orthogonally to a square adjacent to an enemy piece and attack all three adjacent squares in the movement direction (eg. when charging north, attacks all three squares northwest, north, and northeast)
+** The pawn (the “blockade”) can
+*** attack any single orthogonally adjacent square 
+* Attacks:
+** The first time a piece is attacked, it is placed on its side in-place and cannot be used the next turn. This is its “disabled” state.
+** The bishop can heal the disabled piece to reactivate it
+** If a disabled piece is attacked again on a subsequent turn, then it is removed for the rest of the game and cannot be summoned again
+** Another piece cannot move onto its square
+** Rooks can shoot over disabled pieces, and knights can charge over them (but cannot stop on them)
+* Win condition:
+** Just like chess, the enemy’s king must fall
+* Notes:
+** Example queen pulling movement:
+*** From left to right: Ra1, Qb1 -&gt; Rg1, Qh1
+****  The rook is left of the queen, and they both move right
+*** From bottom to top: Ra1, Qa2 -&gt; Ra7, Qa8
+**** The rook is below the queen, and they both move up
+** Pieces cannot perform any action while disabled, including the king
+** You can never heal or attack across an active enemy pawn, but you can always heal or attack over your own pawn
+</pre>
+</div>
 <div created="20200915191308902" modified="20200915191308902" title="$:/config/AutoSave">
 <pre>no</pre>
 </div>
