@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Jay R Bolton — Notes</title>
+<title>Jay R Bolton — My Wiki</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -151,6 +151,8 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/manager</li>
 
+<li>$:/config/WikiParserRules/Inline/wikilink</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -205,6 +207,8 @@ Error message and password prompt
 
 <li>$:/state/image-picker/system--1365487189</li>
 
+<li>$:/state/Link/--1209367846/search</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/ShowPaletteEditor</li>
@@ -255,63 +259,7 @@ Error message and password prompt
 
 <li>$:/view</li>
 
-<li>Baltimore Classification</li>
-
-<li>Dot product</li>
-
-<li>Entropy</li>
-
-<li>Escherichia</li>
-
-<li>Frontend framework 1</li>
-
-<li>Gene</li>
-
-<li>General Language Idea 1</li>
-
-<li>Haplotype</li>
-
-<li>KBase</li>
-
-<li>KBase Search</li>
-
-<li>Machine Learning</li>
-
-<li>Operon</li>
-
-<li>Pangenome Research</li>
-
-<li>Pathogenic Predictor</li>
-
-<li>Perceptron</li>
-
-<li>Postgres abstraction layer</li>
-
-<li>Project Ideas</li>
-
-<li>Promoter</li>
-
-<li>ResearchFair</li>
-
-<li>Robust networked applications</li>
-
-<li>Sigmoid neurons</li>
-
-<li>Simulation of real neurons</li>
-
-<li>Snowflake Simulator</li>
-
-<li>Text fragment</li>
-
-<li>TiddlyWiki as personal website</li>
-
 <li>TiddlyWiki saving and loading</li>
-
-<li>Toread</li>
-
-<li>Ukkonen's Algorithm in Rust</li>
-
-<li>Viral Host Association</li>
 
 </ul>
 </p>
@@ -341,6 +289,9 @@ Error message and password prompt
 </div>
 <div created="20200915184938993" modified="20200915184938993" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/manager">
 <pre>show</pre>
+</div>
+<div created="20210112061147353" modified="20210112061147353" title="$:/config/WikiParserRules/Inline/wikilink">
+<pre>disable</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -9865,8 +9816,8 @@ toolbar-save-button:
 untagged-background: rgb(255, 255, 255)
 very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 </div>
-<div created="20200915004128866" modified="20210112060904776" title="$:/SiteSubtitle">
-<pre>Notes</pre>
+<div created="20200915004128866" modified="20210112061119427" title="$:/SiteSubtitle">
+<pre>My Wiki</pre>
 </div>
 <div created="20200915004125362" modified="20210112060855574" title="$:/SiteTitle">
 <pre>Jay R Bolton</pre>
@@ -9913,6 +9864,9 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div created="20200930232029306" modified="20200930232031081" title="$:/state/image-picker/system--1365487189">
 <pre>hide</pre>
 </div>
+<div created="20210112061439762" modified="20210112061449592" title="$:/state/Link/--1209367846/search">
+<pre></pre>
+</div>
 <div created="20200915200944171" modified="20201019195941830" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
@@ -9925,11 +9879,11 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div created="20200922212710504" modified="20210112060847934" title="$:/state/tab--86143343">
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
-<div created="20200915005123352" modified="20210112060932343" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Saving</pre>
+<div created="20200915005123352" modified="20210112061130868" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20200915005134431" modified="20210112060818020" title="$:/state/tab-2065006209">
-<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+<div created="20200915005134431" modified="20210112061105807" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
 <div created="20200915005229408" modified="20200929203306337" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -9937,7 +9891,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210112060642048" list="$:/ControlPanel" modified="20210112060714178" title="$:/StoryList">
+<div created="20210112060642048" list="[[TiddlyWiki saving and loading]]" modified="20210112061818564" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10146,735 +10100,16 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div created="20200915184723312" modified="20200915184739124" title="$:/view">
 <pre>classic</pre>
 </div>
-<div created="20201027213140715" modified="20201027213420475" tags="todos bio concept" title="Baltimore Classification">
-<pre>* Grouping of [[Virus]]es based on their method of [[mRNA] synthesis
-* Seven groups based on:
-** DNA vs RNA
-** Single or double stranded
-** Whether the [[Sense]] of a single-stranded RNA genome is positive or negative
-
-TODO</pre>
-</div>
-<div created="20200930231837114" modified="20201019200203920" tags="concept math" title="Dot product">
-<pre>* Two input matrices of equal length containing floats or ints
-* Returns a ''single number''
-* It simply matches up every cell in one matrix with every cell in the other, multiplies them, and sums up all cells
-
-[img[https://wikimedia.org/api/rest_v1/media/math/render/svg/5bd0b488ad92250b4e7c2f8ac92f700f8aefddd5]]
-
-[img[https://www.mathsisfun.com/algebra/images/matrix-multiply-a.svg]]
-</pre>
-</div>
-<div created="20200915214113720" modified="20200915214514068" tags="bio physics concept" title="Entropy">
-<pre>!!! Interests:
-* The associations between entropy and biology
-* Untangle the associations between entropy, disorder, work, and heat
-
-!!! Questions:
-* What is [[Enthalpy]]?
-* What is a concrete example of entropy locally decreasing in a biological system, but causing entropy in the surrounding environment to increase? (something with respiration, anabolism, catabolism, ATP?)
-** Photosynthesis relies on entropy increasing in the solar system (the sun’s radiation dispersing), while entropy is reduced in the plant 
-* Are there any examples of non-life systems (auto-catalysis, crystal growth, etc) that locally reduce entropy?
-** Computers and other human-invented technology
-** Not sure: planets, bubbles, other enclosed systems
-* How is it that heat dispersing to other objects increases the disorder and the number of possible states in the system? 
-** Example of ice to liquid water to water vapor. Heat increases, entropy increases
-** More heat = more atomic distribution = increased entropy = higher disorder
-</pre>
-</div>
-<div created="20200916000135690" modified="20200916002515206" tags="bio genomics thing qs" title="Escherichia" type=" ">
-<pre>* Is a genus
-* Is [[Gram Negative]]
-* Child of family [[Enterobacteriaceae]]
-* Is a [[Rod-Shaped Bacteria]]
-* Usually motile with flagella
-* Both [[Aerobic]] and [[Anaerobic]] (facultative)
-* Provides vitamin K for warm-blooded hosts from within their gut
-* Do not decarboxylate ([[Decarboxylation]]) [[Lysine]
-* Do not hydrolize ([[Hydrolysis]]) [[Arginine]]
-
-!! Questions
-* I read somewhere (where?) that it has high ANI (above 95%) with [[Shigella]], but they are considered different genera. Why? By what measure are they separated?
-** What is the ANI between Shigella and E.Coli?</pre>
-</div>
-<div created="20201006204348602" modified="20201007024102756" tags="idea" title="Frontend framework 1" type="">
-<pre>''High level conclusions''
-
-* Stop thinking about this, just use Preact or Svelte or whatever. Spend you time on more interesting things, like the game, bio, or novel languages.
-
-* Use a cross-compiled statically linked binary CLI to compile and render. Don't use NPM.
-* Ability to render and develop components independently
-* Driven by data models
-* Data binding based rendering
-* CSS shadowing with the ability to extend and overwrite child component styling.
-
-The high-level idea is to have a frontend GUI programming framework that would try and reflect programming principles from Jonathan Blow:
-
-* As close to the metal as possible. In the browser, you can't get very far. But you can remove a lot of the extra layers and barriers to entry: bundling, packaging, transpiling
-** Does not hide or cover how things actually work, but provides a framework to make it more efficient to work with the dom and css
-** Perhaps makes use of web assembly, low-level memory buffers, and structs, `TypedArrays,` etc
-** No virtual dom or functional programming stuff. Imperative
-** Uses strong and well-defined types
-** Assumes the programmer is competent and does not try to guard against mistakes
-** Prioritizes performance
-* Make use of `IndexedDB` for the application state
-* Avoid npm and any packaging by including everything you need in the framework
-** Some set of generic utilities
-* Could include cross-platform binaries for some kind of dev tool
-* HTML5, ECMAScript 5, and CSS
-* Make use of custom node attributes
-** Like viewscript, all in the attributes?
-* Make it easy to manually play with and test individual components separately
-
-!! Data flow
-
-# Session data comes in from IndexedDB
-## User configures the local database schema
-## The local DB has events for CRUD actions
-# Backend data is retrieved via fetch calls
-## User configures the fetch params
-## The backend is defined as a set of fetch calls to retrieve and update data
-## The backend has events for every fetch start/progress/end
-## The backend can be synced with the localDB in a user defined way
-## Dev can write functions that transform data retrieved from and pushed into the backend
-# Dom interaction triggers fetch calls and/or updates to IndexedDB or the backend, and vice versa
-
-In-memory state could use memory buffers (eg. DataView or Construct-JS), while persistent state uses IndexedDB. All use json-schema.
-
-Dev mode would do json schema validation of everything.
-
-! Data first?
-
-Start with the database; define schemas, which can be nested and composed. Initialize the database using a schema. Then you can have functions to CRUD on the database, with a dev and prod mode and schema validation. Register event handlers for database updates.
-
-Now, the UI components simply use custom attributes in the DOM that bind to properties in the database. These custom attributes are defined by javascript functions, which have access to the dom node and are called every time the database updates.
-
-! UI Components and data
-
-* A UI component is defined without interaction with the backend or IndexedDB, but has local state controlling dynamic elements (eg. dropdown open/close/highlight state). This is ''Component local state''. A component is independently defined without any coupling to local DB or backend. 
-* When a component is placed in the layout, it can be bound to localDB or backend events
-** Dev defines what component local events are bound to local DB or backend events
-** Dev defines what local DB or backend events update component local state
-
-# Define a generic set of json schemas for the whole app
-# Define a generic set of transformations from schema to schema
-# Define a set of schemas for the local DB
-# Define a set of schemas for each component's local state
-# Define a set of backend schemas
-## Define urls and fetch params for each schema
-## Some backend data is readable only, or readable+writable
-# Define transformations between backend and local DB, localDB and components, and backend and components
-## When a local component's state changes, the transformation is applied and updates the localDB or the backend
-
-! Reusability
-
-This is the most important consideration: if we take away packaging and bundling, we must still have the ability to reuse components and extend/modify them.
-
-All components should be defined as templates using local state, separate from the page layout.
-
-Local state can be declared and modeled using something like json schema or a type struct
-
-Elements like checkboxes can be bound to local state such as bools.
-
-When a component is placed in the layout, you can specify what data in the local state is bound to what data in the localDB
-
-One possibility: sort of web component style, where each component has its own dedicated html file. Within that file, you have a script tag for the JSON schema (with defaults), a style tag for styling, and a javascript tag. A CLI binary would have to manage rendering the file, and bundling other component imports (commands for build, render, dev, validate, etc)
-
-Attributes
-
-* Ability to import other components
-* Components do not need UI
-* Component state is persisted to indexedDB
-* Component state is auto-namespaced
-* Ability 
-
-! Examples
-
-Todo list item
-
-`
-&lt;script&gt;
-component.schema = {
-  &quot;type&quot;: &quot;object&quot;,
-  &quot;required&quot;: [&quot;name&quot;, &quot;done&quot;],
-  &quot;properties&quot;: {
-    &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
-    &quot;done&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: &quot;false&quot;}
-  }
-}
-// Javascript or typescript can go here
-&lt;/script&gt;
-
-&lt;style&gt;
-/* Ordinary CSS goes here */
-p {
-  font-weight: bold;
-  margin-left: 1rem;
-}
-&lt;/style&gt;
-
-&lt;div&gt;
-&lt;!-- Actual HTML templating goes here, using attribute binding --&gt;
-  &lt;input type=&quot;checkbox&quot; _checked=&quot;done&quot;&gt;
-  &lt;p _text='name'&gt;&lt;/p&gt;
-&lt;/div&gt;
-`
-
-Todo list
-
-`
-&lt;import rel=&quot;todoItem.html&quot;&gt;
-&lt;script&gt;
-const todoItem = component.include(&quot;todoItem.html&quot;)
-component.schema = {
-  type: object,
-  properties: {
-    items: {
-      type: array, items: {type: todoItem.schema}
-    },
-    allDone: {type: &quot;boolean&quot;, default: false}
-  }
-}
-
-
-&lt;/script&gt;
-&lt;style&gt;
-/* Add some style to a child component */
-.item div p {
-  color: pink;
-}
-&lt;/style&gt;
-&lt;div _repeat=&quot;todoItems&quot;&gt;
-  &lt;div class='item' _each&gt;&lt;/div&gt;
-&lt;/div&gt;
-`</pre>
-</div>
-<div created="20200916001033165" modified="20200916001514805" tags="bio concept genomics qs todos" title="Gene">
-<pre>!! TODO
-* Define, list facts
-
-!! Questions
-* What does a real gene look like?
-* How exactly does it get transcribed and translated?
-* What are its non coding sequences? What is included, what is left out, how is it ordered?
-* What constitutes meaningful vs. non-meaningful gene changes (evolutionarily)?
-** Change in functionality or not
-</pre>
-</div>
-<div created="20200917002607510" modified="20200922001634850" tags="complang compsci qs" title="General Language Idea 1">
-<pre>Is there a declarative way we can define langague-to-C source grammar rules without having to code?
-
-* Imperative
-* Modules and functions
-* Can be either compiled or interpreted
-** Has its own shell that is just as convenient as bash
-*** Ie. short file-system commands like `ls`
-* Transpiles to C
-* Imports using file paths
-* No garbage collection
-* Very small and simple
-* Ability to abstract types, as simple as possible
-* Strong data types, something like FlatBuffers
-* Support for generators and/or coroutines
-* Logo style syntax
-
-Garbage collection happens with a context manager. Every type can be declared using a block, and is deallocated at the end:
-
-`
-use Type1 data1
-    Type2 data2 {
-    # Use data1 and data2 here
-}
-# Now it's deallocated
-`
-
-Concurrency is handled with something similar to async/await, but better?
-
-You don't have to mark a function as async, you can call any function in a thread or process:
-
-`
-use HTTPResult deferred {
-    deferred = thread request.get &quot;spacejam.com&quot;
-    # Do some more stuff here concurrently with IO
-    # Block on the result to use it 
-    await deferred
-    # Use the result
-    print deferred.val.body
-}
-`
-</pre>
-</div>
-<div created="20201029235250913" modified="20201029235602420" tags="bio concept genomics" title="Haplotype">
-<pre>* A haploid is a group of genes inherited from a single parent
-* In contrast to a [[Diploid]], which has pairs of chromosomes from each parent</pre>
-</div>
-<div created="20200915183940058" modified="20201019192146414" tags="kbase" title="KBase" type="text/vnd.tiddlywiki">
-<pre>* [[KBase Search]]
-* [[KBase Rel Eng]]
-* Docs and resources
-** [[2020 Q4 Task tracking spreadsheet|https://docs.google.com/spreadsheets/d/1SN-O43PyXwR5qUxLQ1aoFKj07OTLJC_sg3h61pmKsoM/edit#gid=566966453]]
-** [[2020 Q4 KE work|https://docs.google.com/presentation/d/1Tv4MSKgmn8OzwIw3da4n387W6D8lUT77uW9VyOYyC8E/edit#slide=id.g9798efb14f_1_0]]
-* [[To run jupyter lab on berkeley servers|https://docs.google.com/document/d/1UcY31APdkBuDCSqSlcDK8p7yZxm0D4tZDQKfGA8iQI0/edit]]</pre>
-</div>
-<div created="20200915184039359" modified="20200915200528775" tags="kbase" title="KBase Search">
-<pre>* Berkeley Elasticsearch addr: `10.58.0.121:9500`
-* Prod Elasticsearch addr : `es01:9200`</pre>
-</div>
-<div created="20201020043715655" modified="20201020223522841" tags="compsci concept" title="Machine Learning">
-<pre>* [[Machine learning for artists|https://ml4a.github.io/ml4a/]]
-* [[ML for bio overview paper|https://genomebiology.biomedcentral.com/articles/10.1186/gb-2013-14-5-205]]</pre>
-</div>
-<div created="20200915004252041" modified="20200915214548547" tags="bio genomics concept" title="Operon" type="text/vnd.tiddlywiki">
-<pre>* Made of many genes
-* Transcribed by a single [[Promoter]]
-* Sometimes controlled by a regulatory gene
-* 100-1000 base pairs long</pre>
-</div>
-<div created="20200915212100370" modified="20200915212403633" tags="bio" title="Pangenome Research">
-<pre>!! Questions
-* For every pangenome across GTDB, what is the mean and variance of proportions of core to shell to cloud? What does the distribution look like and what are some outliers? What portion of pangenomes are closed vs open across the taxonomy?
-* Given a pangenome and a single genome, can we quantify the genome’s “fit” into the pangenome? Ie. what percentage of genes in the single genome are represented in the pangenome’s core and shell?
-* How can we quantify which pangenome algorithms are more accurate? What could be used as a “training” set?
-* Across all GTDB pangenomes, what are the most common functions or Go annotations in each partition?
-* If two pangenomes have a lot of functions in common in their shell or cloud partitions, does that indicate co-location and HGT?
-
-!! Basic/misc questions
-* Given two closely related strains in different species, maybe in the same genus, do they have any genes that have an exact DNA or transcription match? How many? Is exact sequence match for a gene useful or do you always need something like blast/blastp?
-** And how about with proteins?
-</pre>
-</div>
-<div created="20201020184320027" modified="20201022011304107" tags="bio compsci concept idea kbase project" title="Pathogenic Predictor">
-<pre>* [[PathoPhenoDB|http://patho.phenomebrowser.net/#/]]
-** [[Paper|https://www.nature.com/articles/s41597-019-0090-x]]
-* [[What is a pathogen? article|https://bmcbiol.biomedcentral.com/track/pdf/10.1186/1741-7007-10-6]]</pre>
-</div>
-<div created="20200930230915043" modified="20201001235823471" tags="concept compsci ml" title="Perceptron">
-<pre>How they work
-
-* Binary input to binary output
-* Every input can have a unique weight to change its importance for the output
-* The output is determined by the sum of the weighted inputs
-* Has a parameter, the ''threshold'', which the sum must be over to activate the output and give a 1
-* The ''bias'' is a different way of describing the threshold. The [[Dot product]] of `* weights inputs` ''plus'' the bias must be ''greater than zero'' to get an output of 1
-
-History
-
-* Developed in the 50s and 60s by Frank Rosenblatt
-* They come from previous work that turns basic neural behavior (esp the activation threshold) into a propositional logic
-
-Why they aren't used
-
-* To do machine learning, we need to make small tweaks in the weights and biases to get small changes in the output
-* With perceptrons, small tweaks either have no effect or flip the output entirely
-* Instead, we need continuous 0-1 float values and such as in [[Sigmoid neurons]]
-
-Ideas
-
-* Perceptrons are not used because they are hard to train incrementally. What if, instead of the emphasis being on training weights and biases, we focus on genetic/evolutionary algorithms that randomly mutate everything about the network, including topology.
-** How to distinguish between single-lifetime learning vs multigenerational fitness
-*** Single lifetime can change weights, biases, and topology
-*** Keep a genome which determines your starting state
-*** The genome records weights, biases, and topology of the network when it is &quot;born&quot; (ie before training)
-*** While training, everything can then change with every input
-*** When a network survives and reproduces, randomly mutate the &quot;genome&quot; (ie. the starting state)</pre>
-</div>
-<div created="20201007045451379" modified="20201007051536175" tags="idea" title="Postgres abstraction layer">
-<pre>''Conclusions'': It's probably best to just immerse yourself in Postgresql and embrace all its features and extensions. Have Psql do the heavy lifting, with a light Python application layer in front of it for stuff like migrations and glue code.
-
-Use an easier schema language that generates a Postgresql schema, application layer (following good conventions), and an admin UI. 
-
-Schema language specifies
-
-* Data specifications for every table, including relationships
-* user and group roles and access levels
-* Migrations
-
-A web UI allows you to write and update the schema and administer/query the database.</pre>
-</div>
-<div created="20200929203335736" modified="20200929203521292" tags="project index" title="Project Ideas">
-<pre>Actionable
-
-* [[Snowflake Simulator]]
-* [[Text fragment]]
-* [[Ukkonen's Algorithm in Rust]]
-
-Really Big
-
-* [[ResearchFair]]
-* [[General Language Idea 1]]</pre>
-</div>
-<div created="20200915004653243" modified="20200915214701940" tags="bio genomics concept" title="Promoter">
-<pre>* Is a sequence of [[DNA]]
-* [[Proteins]] bind to it
-  * and initiate transcription
-* Located near the start of the transcription site for [[Gene]]s</pre>
-</div>
-<div created="20200915210924896" modified="20200915211952886" tags="" title="ResearchFair">
-<pre>!! Problems:
-* http://www.youtube.com/watch?v=N2zK3sAtr-4
-* When looking at a research paper, article, poster, etc, usually people:
-** cannot find the data 
-** cannot download the data
-** cannot read the data
-** cannot interpret the data
-
-!! Solutions:
-* Create a web service which can provide universal research data hosting, with publication and researcher IDs tied to dataset repositories
-* Provide an indefinite archive of the data, plus reliable downloads for all data
-* Centralize the searchability of the data
-* Centralize the mapping of publication IDs to full datasets
-* Add a set of standards for annotating the data so that it is human interpretable
-* Provide a set of standards for good data formats that balance human and computer readability
-* Make it easy for users to annotate and format the data well
-* Provide a scoring system for the quality of a dataset
-
-!! Further potential:
-* With standardized annotations and format, greater ability to correlate datasets and create clusters of related research
-* Hypothesis generation
-* Monetization for hosting of private data
-
-!! Technical notes:
-* AWS S3 Glacier for indefinite archival
-* Bittorrent and WebTorrent for all downloads to reduce cost and increase performance for popular data.
-* Every dataset gets a web seed to ensure availability
-* JSON API with Python and Postgresql to handle users, groups, projects, etc.
-* Serves as the authoritative centralized store of metadata, indexes, and authorization around datasets
-* Elasticsearch/Solr down the line for expanding search capability
-* All metadata about a dataset is stored in human-readable format within the dataset itself in CSVs, markdown, etc
-* Datasets are human readable by themselves without any extra infrastructure -- just text files
-
-!! Phase 1 Features
-* Dataset annotation standard (file-based only)
-* User authentication and groups
-* Browser UI
-* JSON API with database
-* Project creation and user/group permission management
-* Project, file, and folder annotation (descriptions, provenance)
-* Dataset and file annotation wysiwyg
-* No bittorrent capabilities -- just S3
-* Ongoing manual dataset import from open license papers
-
-!! Phase 2 features
-* Bittorrent downloads and web seeds
-* Some level of automated dataset import from open license research
-CLI
-* Desktop app
-
-!! Phase 3 Features
-* Payment plans for private data
-* Social features: commenting, starring, sharing, profiles, and notifications
-* More powerful search with Elasticsearch or Solr
-* Full audit/log history for every project, trash can, undo
-
-!! Resources and links
-* FAIR data principles
-** Details: https://www.go-fair.org/fair-principles/
-** https://www.nature.com/articles/s41597-020-0524-5
-* Scientific data carpentry
-** https://medium.com/outlier-bio-blog/a-quick-guide-to-organizing-data-science-projects-updated-for-2016-4cbb1e6dac71
-** https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424
-* S3 object history tracking
-** https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
-* S3 locking objects
-** https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html
-* S3 with bittorrent clients
-** https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html
-* Web torrent
-** https://webtorrent.io/
-** Also see web seeds
-
-!! MVP steps
-* Create file-only standard for datasets
-* Create a couple datasets using this standard
-* store them in GCS or similar
-* Create a dataset validator (maybe in rust so we can release cross platform binaries)
-* PSQL/python service with users and groups
-* Browser UI for user signup/login/confirmation/sign out
-* Group creation, member invitation/removal, editing, deleting
-* Project/dataset CRUD with S3 bucket creation
-* Dataset readme creation and other basic files
-* File upload and basic annotation
-* Groups have members with permission levels
-* All members can create new datasets under the group
-* Level 1: Read existing datasets
-* Level 2: Edit existing datasets
-* Basic private/public permissions with users/groups
-* Projects can be owned by a user or a group
-* A project is assigned users and/or groups for authorization to:
-* Level 1: Read the data
-* Level 2: Edit the dataset
-* Level 3: Edit the project settings, such as changing the name, deleting the dataset, or inviting/removing other collaborators
-* Projects can have public or private read permissions
-
-!! FAIR Standard Implementation
-
-Source: https://en.wikipedia.org/wiki/FAIR_data
-
-Implementation notes in bold.
-
-!!! Findable
-
-The first step in (re)using data is to find them. Metadata and data should be easy to find for both humans and computers. Machine-readable metadata are essential for automatic discovery of datasets and services, so this is an essential component of the FAIRification process.
-
-F1. (Meta)data are assigned a globally unique and persistent identifier
-
-* UUID for the research repository. File paths can be appended
-* Eg:
-** Repository id: 780a835a-fca9-41e7-bf22-b5f951e2b80e
-** File path: 780a835a-fca9-41e7-bf22-b5f951e2b80e/dir/file.txt
-** Metadata path: 780a835a-fca9-41e7-bf22-b5f951e2b80e/dir/file.meta.yml
-** Full URL: https://researchfair.org/r/780a835a-fca9-41e7-bf22-b5f951e2b80e
-** Could still have a friendly path with slugs, such as researchfair.org/r/org-name/dataset-name, but still always provide canonical url
-
-F2. Data are described with rich metadata (defined by R1 below)
-
-* Repo:
-** Related URLs, publications, 
-** DOI, OrcID, any other publication identifiers
-** Files: title, description, list of related files, compute provenance, format(s), format version, format URI, schema URI (See R1.2)
-
-F3. Metadata clearly and explicitly include the identifier of the data they describe
-
-* Include repo uuid and path in the metadata file
-
-F4. (Meta)data are registered or indexed in a searchable resource[2]
-
-* pSQL, elasticsearch, etc
-
-!!! Accessible
-
-Once the user finds the required data, she/he needs to know how they can be accessed, possibly including authentication and authorisation.
-
-A1. (Meta)data are retrievable by their identifier using a standardised communications protocol
-
-* See F1
-
-A1.1 The protocol is open, free, and universally implementable
-
-* HTTPS
-
-A1.2 The protocol allows for an authentication and authorisation procedure, where necessary
-
-* JWTs
-
-A2. Metadata are accessible, even when the data are no longer available[2]
-
-* Data will always be available
-
-!!! Interoperable
-
-The data usually need to be integrated with other data. In addition, the data need to interoperate with applications or workflows for analysis, storage, and processing.
-
-I1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
-
-* YAML (safe subset)
-
-I2. (Meta)data use vocabularies that follow FAIR principles
-
-* Repo validators (python, binary, cli)
-
-I3. (Meta)data include qualified references to other (meta)data[2]
-
-* Use UUIDs with paths
-
-!!! Reusable
-
-The ultimate goal of FAIR is to optimise the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings.
-
-R1. Meta(data) are richly described with a plurality of accurate and relevant attributes
-
-R1.1. (Meta)data are released with a clear and accessible data usage license
-
-* LICENSE file required in root of repo, and can be validated
-
-R1.2. (Meta)data are associated with detailed provenance
-
-* This file was used as input in what computation, producing what files as output?
-* This file was the output from what computation, and what files were input?
-* File can be one or several types:
-** raw data (eg samples)
-*** From the source (eg the sequence machine)
-** computation output
-*** What program, what input, and what config
-** computation input
-*** What program, what was output, and what was config
-** computation config
-*** What program, what was output, and what was input
-
-R1.3. (Meta)data meet domain-relevant community standards</pre>
-</div>
-<div created="20201007024041529" modified="20201007045442581" tags="idea" title="Robust networked applications" type="">
-<pre>The purpose of this architecture is
-
-* Highly fault tolerant. As long as you have some hardware to process a request, then a reply will be made
-** Servers can go down, workers can crash, brokers can crash, but the reply will still be made and the app will persist
-
-The entire application is a set of modules with modules containing collections of functions. Function calls can be made serially in the stack frame, or can be delegated over the network
-
-The set of modules lives in a single repo, and the same codebase is deployed on any node in the network. You can configure per-node which modules it can execute (by default, it can execute any). Modules can specify their minimum hardware requirements (eg. an amount of disk space or RAM required).
-
-Every node runs two processes: a broker and a worker. The broker receives requests and decides whether to perform work or delegate to a neighbor based on its own queue size and the queue sizes of the neighbors. Brokers also handle any metadata requests, such as heartbeating.
-
-Not every node needs to be aware of every other node in a fully connected graph. Each node has a limited set of neighbors for tracking status and delegating work. 
-
-Brokers constantly heartbeat and get status (including queue size) of neighbors in the network. To delegate work, brokers forward requests to other brokers which then dispatch the request to its own workers or to another neighbor broker.
-
-Nodes create one broker or worker queue per core for the machine. Initially, there are 50% brokers and 50% worker queues on a machine (this can be configured, network wide and per node). If broker queues are busy while worker queues are idle, then worker queues are transformed into brokers, and vice versa.
-
-When a new worker is added, its address is broadcast to its neighbors.
-
-Edges in the network topology are bidirectional in terms of heartbeating and work delegation.
-
-Brokers have an HTTP channel taking requests and a ZMQ socket delegating work. Workers send and receive through ZMQ sockets.
-
-MVP1
-
-* Bare bones base worker server with heartbeating 
-* Define network topology explicitly through configuration, along with backup neighbor nodes
-** List neighbors in order of priority (most likely ordered by hardware proximity)
-** When you start another worker, give it a list of neighbor addresses
-** Have a minimal web UI that shows the current state of everything: list of workers with addresses, and list of workers that each worker is aware of
-* Show how the network restructures itself after hardware or network goes down for a worker
-
-MVP2
-
-* Add broker and worker processes with queues
-* web UI showing queue sizes and status of every worker and broker
-* Show what happens when a worker crashes, but hardware is fine
-* Show what happens when hardware or network goes down for a worker
-
-Broker algorithm:
-
-* Receive request
-* Check own queue and compare against top N neighbors. Send to own worker or delegate to a neighbor based on least queue size.
-* Broker: in a local database, save the request ID as pending
-* With a configured timeout, reaper combs local database and marks pending requests as failed
-* Broker: when reply is received, remove entry from local db and send reply to client.</pre>
-</div>
-<div created="20201002001149664" modified="20201002011846102" tags="concept compsci math" title="Sigmoid neurons">
-<pre>Facts
-
-* Sigmoid function is `sig x &lt;- div 1 (+ 1 (^ euler (- x)))`
-* When `w*x + b` is large, the output of the sigmoid is closer to 1
-* Very common (perhaps most common) activation function used in neural networks
-* Exponentials (raising `e` to something) has some advantages when doing derivatives (''like what?'')
-
-
-Imperative sigmoid in my weird pseudo lang:
-
-`
-fun sigmoid
-arg x Vec flt &quot;Input values&quot;
-arg w Vec flt &quot;Weights for each input&quot;
-arg bias flt &quot;Bias value for all input&quot; {
-  assert eq (len x) (len w)
-  sum: flt &lt;- 0.0f
-  # Calculate sum of all inputs
-  iter i 0 (len x) {
-    prod &lt;- * (@ w i) (@ x i)
-    sum &lt;- + sum (- prod bias)
-  }
-  sum &lt;- neg sum
-  ret &lt;- div 1 (+ 1 (exp sum))
-}
-`</pre>
-</div>
-<div created="20201002004420205" modified="20201002004935878" tags="compsci bio concept" title="Simulation of real neurons">
-<pre>Try to run ML-like simulations, but modeled closely after real biological models of neurons, with the understanding that it may be statistically less useful:
-
-* Use the step function for activation
-* Use a refractory period after a neuron fires
-* Input to a neuron is continuous, output is continuous, but the activation is a step function
-
-Resources:
-
-* TOREAD: Hodgkins Huxley Model https://neuronaldynamics.epfl.ch/online/Ch2.S2.html
-* Biological nueron model: https://en.wikipedia.org/wiki/Biological_neuron_model</pre>
-</div>
-<div created="20200915203733528" modified="20200915210730401" tags="project idea" title="Snowflake Simulator">
-<pre>Adapt the Netlogo implementation into a browser and canvas implementation
-
-The paper I originally used:
-http://www.patarnott.com/pdf/SnowCrystalGrowth.pdf
-
-
-In 3 dimensions, this could be implemented in Unity:
-https://www.nature.com/articles/s41524-017-0015-1
-
-</pre>
-</div>
-<div created="20200915210846123" modified="20200915210915346" tags="project idea" title="Text fragment">
-<pre>Do the KBase interview question as optimized as humanly possible in Python, perhaps using Cython pieces.</pre>
-</div>
-<div created="20200915203459663" modified="20200915214731138" tags="tiddlywiki idea" title="TiddlyWiki as personal website">
-<pre>* Use tiddlywiki as my website CMS, saving it to a github repo
-* I would need to customize the theme to my liking, which may take some work
-** I can use the default theme with a custom palette to start out
-
-Pros:
-
-* Extremely editable and more maintainable than Hexo
-* Nerd fun
-* Maybe I would write and contribute more
-* Scope of the website could expand a bit
-
-Cons:
-
-* A little uglier and less clean for the user</pre>
-</div>
-<div created="20200915203133091" modified="20200929203316678" tags="tiddlywiki process" title="TiddlyWiki saving and loading">
-<pre># Save to a github repo via the &quot;Github Saving&quot; tab
+<div created="20200915203133091" modified="20210112061543707" tags="tiddlywiki process" title="TiddlyWiki saving and loading">
+<pre># Save to a github repo via the &quot;Github Saving&quot; tab under $:/ControlPanel
 # Keep an in-memory copy of that wiki in a pinned tab in Firefox
-# To load the wiki again, download the file or clone the repo, then open it
+# To load the wiki again, download the file or clone the repo, then open it or refresh
 
 Two laptop example:
 
 # I edit the wiki on laptop A and save it to the repo
 # On laptop B, I download the wiki, edit it, and save to the repo
-# On laptop A, I re-download the wiki, overwriting my local copy, and open it</pre>
-</div>
-<div created="20201002004850587" modified="20201002004922990" tags="" title="Toread">
-<pre>* Hodgkins Huxley Neuronal model: https://neuronaldynamics.epfl.ch/online/Ch2.S2.html
-* Biological nueron model: https://en.wikipedia.org/wiki/Biological_neuron_model</pre>
-</div>
-<div created="20200915210744461" modified="20200915210831338" tags="project idea" title="Ukkonen's Algorithm in Rust">
-<pre>* Would be a great coding exercise
-* People may find it useful
-* Could perhaps use it in python and/or js with bindings</pre>
-</div>
-<div created="20201029211942207" modified="20201029212418033" tags="concept bio project todos" title="Viral Host Association">
-<pre>TODOs
-
-* Look at a single strong example of a virus to host association
-** What does the virus look like? Where does the sequence come from? How long is the sequence? How many genes and proteins? What taxonomy?
-** What does the host look like? What taxonomy? How long is the sequence? How many genes and proteins? What environment did it come from?
-
-&quot;Topologies&quot;. TODO figure out the meaning of each of these
-
-* Linear contig
-* Integrated provirus
-* Direct terminal repeats (DTRs)
-* Reference
-* Genome Bin
-* Concatemer
-
-&quot;Taxonomic Classification Method&quot;. TODO figure out meaning of each
-
-* Viral RefSeq genes
-* VOGdb markers
-* VOGdb markers via vOTU
-* Ref
-* NCLDV Markers
-
-&quot;Host prediction methods&quot;
-
-* Similarity to host genome 
-* Consensus vOTU host
-* CRISPR (near)identical
-* Provirus
-* Reference
-* CRISPR multiple partial
-* Detection in a GVMAG</pre>
+# On laptop A, I re-download the wiki, overwriting my local copy, refresh it, and continue saving</pre>
 </div>
 
 
