@@ -10122,8 +10122,8 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div created="20200915004125362" modified="20210112060855574" title="$:/SiteTitle">
 <pre>Jay R Bolton</pre>
 </div>
-<div created="20210112063554432" modified="20210121004122765" title="$:/state/bimlas/disqus">
-<pre></pre>
+<div created="20210112063554432" modified="20210210032721244" title="$:/state/bimlas/disqus">
+<pre>Hello</pre>
 </div>
 <div created="20200915212903899" modified="20200915212903899" title="$:/state/folded/$:/Manager">
 <pre>hide</pre>
@@ -10441,7 +10441,7 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]]</pre>
 * Blind bake the crust using weights on parchment paper (you can use uncooked beans)
 * Use a silicone pie crust guard during the second half of baking the pie with the filling</pre>
 </div>
-<div created="20210210010537692" modified="20210210032541676" tags="process coding" title="Robust code">
+<div created="20210210010537692" modified="20210210045323516" tags="process coding" title="Robust code">
 <pre>Here is my reference page of key, high-level concepts that I always return to when I am trying to make a robust, distributed (usually web) software system.
 
 I order the below sections roughly by the importance I place in them.
@@ -10468,15 +10468,15 @@ You can judge how error sensitive your dependency web is by asking: if I corrupt
 # How easily can I find the origin of the error starting from the place where the error is visible?
 # How much of the system goes down?
 
-(1) is usually caused by tests (whether manual or automated) only covering sub-parts of the system rather than the whole. 
+(1.) is usually caused by tests (whether manual or automated) only covering sub-parts of the system rather than the whole. 
 
-(1) can also be mitigated by having strongly typed interfaces for every module, which provides a description of the methods, parameters, and return values, so you can more easily detect when the module's contract changes.
+(1.) can also be mitigated by having strongly typed interfaces for every module, which provides a description of the methods, parameters, and return values, so you can more easily detect when the module's contract changes.
 
-(2) can be addressed with error logging that always allows you to follow the error to an origin source, rather than dead-ending. A service that raises an error due to an error from another service should log the full error from the dependency. 
+(2.) can be addressed with error logging that always allows you to follow the error to an origin source, rather than dead-ending. A service that raises an error due to an error from another service should log the full error from the dependency. 
 
-(2) can also be made easier by removing network communication boundaries when they are not necessary, and integrating the functionality into the same process, if possible.
+(2.) can also be made easier by removing network communication boundaries when they are not necessary, and integrating the functionality into the same process, if possible.
 
-(3) leads us into the next section, detailing Fault Tolerance. It is usually a great start to simply evaluate the failure potential for every module, and to have awareness of how much of the system each module would be responsible for breaking. Knowing which modules are core and which are accessory can help prioritize how much automated testing coverage you need.
+(3.) leads us into the next section, detailing Fault Tolerance. It is usually a great start to simply evaluate the failure potential for every module, and to have awareness of how much of the system each module would be responsible for breaking. Knowing which modules are core and which are accessory can help prioritize how much automated testing coverage you need.
 
 !! Fault Tolerance
 
@@ -10490,9 +10490,16 @@ Your system can fail because of:
 ## Network communication failure on host or client
 ## Host failure -- disk, memory, etc
 
-I already linked this resource above, but want to do so again for emphasis: [[Joe Armstrong's thesis about working on Erlang|https://softwareengineering.stackexchange.com/questions/312022/the-trend-of-the-develop-branch-going-away]], and how it handles fault tolerance and distributed systems.
+One approach to provide failover is an Erlang-style supervision tree of message-passing services. Supervisors dispatch messages to children, monitor their health, and restart them on errors. 
 
-Another great resource is [[Chapter 4 of the ZeroMQ book |https://zguide.zeromq.org/docs/chapter4/]]on reliable request-reply architectures. 
+[[Joe Armstrong's thesis about Erlang|https://softwareengineering.stackexchange.com/questions/312022/the-trend-of-the-develop-branch-going-away]] goes into great detail about fault tolerance using supervision trees in the OTP architecture.
+Another great resource is [[Chapter 4 of the ZeroMQ book |https://zguide.zeromq.org/docs/chapter4/]]on reliable request-reply architectures. The Majordomo protocol could be seen as a more limited example of the OTP architecture from Erlang.
+
+Supervision trees provide multiple ways to handle errors and restart children in the tree. Pages 118 through 159 in the above thesis go into detail about how these work.
+
+!!! Visibility
+
+
 
 !! Manual Quality Assurance
 
@@ -10522,9 +10529,9 @@ Every layer provides some level of convenience, but always at a cost. Most often
 
 In the case of performance, any abstraction layer will add some blow to performance, usually in the form of additional parsing, layers of compilation, a larger call stack, or extra network communication.
 
-For debugging, the fewer layers, the simpler the call trace for the error. With less translation and parsing between layers, you'll more easily be able to have instrumentation to debug your code. You will also have fewer communication points that can potentially become out of sync or fail in different ways.
+For debugging, the fewer layers, the simpler the call trace for the error. With less translation and parsing between layers, you'll more easily be able to insert probes and debug your code. You will also have fewer communication points that can potentially become out of sync or fail at the boundaries.
 
-This is not to say that layers are always unnecessary. We don't want to program large systems in assembly. But we do need to consciously and carefully weigh the cost to benefit ratio whenever we add an additional layer to our system.
+This is not to say that layers are always unnecessary. We don't want to program large systems in assembly language. But we do need to consciously and carefully weigh the cost-to-benefit ratio whenever we add an additional layer to our system, and we should never think of them as free.
 
 So what does this mean in a practical sense? Use low-level, compiled languages for servers such as Go. Avoid communication over network and HTTP whenever possible: prefer threads, processes, sockets, and lower level protocol frameworks such as ZeroMQ. Avoid ORMs and write queries directly. On the frontend, use vanilla Javascript with a strong understanding of the actual browser API, along with simple and small frameworks that have wide browser support. Avoid, if possible, complicated build processes, fail-prone package managers, and cross-compilation.
 
@@ -10538,7 +10545,7 @@ Much of this is very common advice found everywhere, but I'll reiterate here as 
 * Unit tests should run very fast and be used as feedback loops when working
 * Integration tests should be easy to write, as inclusive as possible, and should hit as many pieces of the system as possible. These can be slow and only need to be run for deploys. 
 
-Not everything needs automated tests, especially things that are very difficult to automate, such as UI. You need to make sure that your return on investment in writing and maintaining the tests is worth it! You don't want to spend 90% of your time on it. Remember that manual QA of UI can still be very fast, is parallelizable, and is usually more thorough than anything automated.</pre>
+Not everything needs automated tests, especially things that are very difficult to automate, such as UI. You need to make sure that your return on investment in writing and maintaining the tests is worth it! You don't want to spend 90% of your time on it. Remember that manual QA of UI can still be very fast, is parallelizable, requires no upfront work or maintenance, and is usually more thorough than anything automated.</pre>
 </div>
 <div created="20200915203133091" modified="20210112064544770" tags="tiddlywiki process" title="TiddlyWiki saving and loading">
 <pre>What I find to be the easiest and most streamlined method after lots of trial and error:
