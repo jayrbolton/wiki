@@ -10441,16 +10441,70 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]]</pre>
 * Blind bake the crust using weights on parchment paper (you can use uncooked beans)
 * Use a silicone pie crust guard during the second half of baking the pie with the filling</pre>
 </div>
-<div created="20210210010537692" modified="20210210010556970" tags="process coding" title="Robust code">
+<div created="20210210010537692" modified="20210210032541676" tags="process coding" title="Robust code">
 <pre>Here is my reference page of key, high-level concepts that I always return to when I am trying to make a robust, distributed (usually web) software system.
 
 I order the below sections roughly by the importance I place in them.
 
 !! Dependency Graphs
 
+A complex web of dependencies might be the main reason systems become error prone and slow to develop, in my experience.
+
+When you make subtle changes to one dependency, errors will propagate through your web of modules, causing large parts of the system to fail in distant places. Tracing the error back to its origin can be difficult.
+
+You will always have a dependency graph, and there is no way to avoid it when making software. Having a good handle on this graph is not about eliminating it, but rather organizing, controlling, and being aware of its risks.
+
+!!! Tree structure
+
+Most often, dependency graphs are a messy web of ad-hoc connections. This is often true in microservices. These hairball structures can be difficult to reason about at a high level. A better alternative is a hierarchical tree of modules, where there is a global API entrypoint in the root of the tree, and messages are dispatched down into subtrees. Messages can also flow up the tree to parents, which then get sent back down the tree to other sub-modules. This structure can be easier to visualize, reason about, and manage.
+
+This type of architecture is used by Erlang, and is gone into great detail in [[Joe Armstrong's thesis|http://erlang.org/download/armstrong_thesis_2003.pdf]].
+
+!!! Evaluation
+
+You can judge how error sensitive your dependency web is by asking: if I corrupt some code in a random module, then:
+
+# How quickly can I detect this failure?
+# How easily can I find the origin of the error starting from the place where the error is visible?
+# How much of the system goes down?
+
+(1) is usually caused by tests (whether manual or automated) only covering sub-parts of the system rather than the whole. 
+
+(1) can also be mitigated by having strongly typed interfaces for every module, which provides a description of the methods, parameters, and return values, so you can more easily detect when the module's contract changes.
+
+(2) can be addressed with error logging that always allows you to follow the error to an origin source, rather than dead-ending. A service that raises an error due to an error from another service should log the full error from the dependency. 
+
+(2) can also be made easier by removing network communication boundaries when they are not necessary, and integrating the functionality into the same process, if possible.
+
+(3) leads us into the next section, detailing Fault Tolerance. It is usually a great start to simply evaluate the failure potential for every module, and to have awareness of how much of the system each module would be responsible for breaking. Knowing which modules are core and which are accessory can help prioritize how much automated testing coverage you need.
+
 !! Fault Tolerance
 
+Your system can fail because of:
+
+# Errors in the execution of the code
+## The code works, but has an unexpected API
+## There is a mistake in the code -- it does the wrong thing or crashes
+## Performance is too low, times out
+# Hardware failure
+## Network communication failure on host or client
+## Host failure -- disk, memory, etc
+
+I already linked this resource above, but want to do so again for emphasis: [[Joe Armstrong's thesis about working on Erlang|https://softwareengineering.stackexchange.com/questions/312022/the-trend-of-the-develop-branch-going-away]], and how it handles fault tolerance and distributed systems.
+
+Another great resource is [[Chapter 4 of the ZeroMQ book |https://zguide.zeromq.org/docs/chapter4/]]on reliable request-reply architectures. 
+
 !! Manual Quality Assurance
+
+In the web development world, this is known as &quot;user testing&quot;, while in the video game world, this is known as &quot;play testing.&quot; 
+
+Video games generally handle this much better than web, where they have full-time play testers on staff. Some web and mobile developers take this seriously with thorough user testing, but often it is done only a few times a year, whereas video game testing is done continuously during development.
+
+I would argue in favor of a constant stream of manual quality assurance testing, both to find bugs on every release and to evaluate usability. 
+
+UI can be tested quickly for bugs by manually working through a checklist of actions. This usually takes only 5-30 minutes for a single person. This should be performed by someone other than the developers who made the changes to give a fresh and unbiased perspective.
+
+Usability tests are more involved and are described well in Steve Krug's books &quot;Don't Make Me Think&quot; and &quot;Rocket Surgery Made Easy&quot;.
 
 !! Elimination of Layers
 
