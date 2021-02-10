@@ -283,6 +283,8 @@ Error message and password prompt
 
 <li>Pie crust tips</li>
 
+<li>Robust code</li>
+
 <li>TiddlyWiki saving and loading</li>
 
 <li>Untitled</li>
@@ -10201,7 +10203,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210121002931726" list="[[Mindful Computering]] Hello" modified="20210121002931726" title="$:/StoryList">
+<div list="[[Robust code]] Hello" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10262,7 +10264,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
     }
 }</pre>
 </div>
-<div created="20200915183952500" modified="20210121004101424" title="$:/temp/NewTagName">
+<div created="20200915183952500" modified="20210210010551857" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200915201052146" modified="20210112060643759" title="$:/temp/search">
@@ -10438,6 +10440,51 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]]</pre>
 * Then, lay it out in the pan and chill it further
 * Blind bake the crust using weights on parchment paper (you can use uncooked beans)
 * Use a silicone pie crust guard during the second half of baking the pie with the filling</pre>
+</div>
+<div created="20210210010537692" modified="20210210010556970" tags="process coding" title="Robust code">
+<pre>Here is my reference page of key, high-level concepts that I always return to when I am trying to make a robust, distributed (usually web) software system.
+
+I order the below sections roughly by the importance I place in them.
+
+!! Dependency Graphs
+
+!! Fault Tolerance
+
+!! Manual Quality Assurance
+
+!! Elimination of Layers
+
+This is something that web developers hardly think about: remove every unnecessary layer you can between your code and the computation you are trying to perform.
+
+I would argue that a proliferation of abstraction layers creates poor performance, bugs, and more difficult development workflows. 
+
+On the web, we work across countless layers of abstraction. Our backend server might be inside of a runtime process that executes on the JVM, which is itself running inside a Docker container, which is then running in a Virtualbox image on a cloud server in an unknown location. The server sends and receives messages in a unique parseable format over a specific style of HTTP. A frontend developer might be working in a virtual-DOM framework running within a language that gets cross-compiled into Javascript, which then gets translated into assembly code that runs inside the user's browser. These web applications are usually riddled with bugs, slow performance, and constant maintenance work.
+
+Contrast these layers with something like the Legend of Zelda: Ocarina of time, written entirely in C in two and a half years, running super close to the hardware, managing memory, and having no bugs that I am aware of. The game makes maximal use of the very limited hardware, keeps track of detailed state in a complex system, and interfaces with the console with a specific API. 
+
+A glaring difference to me between these scenarios is the number of abstraction layers involved. 
+
+Every layer provides some level of convenience, but always at a cost. Most often the case is that the convenience is actually very small, while the cost is very high.
+
+In the case of performance, any abstraction layer will add some blow to performance, usually in the form of additional parsing, layers of compilation, a larger call stack, or extra network communication.
+
+For debugging, the fewer layers, the simpler the call trace for the error. With less translation and parsing between layers, you'll more easily be able to have instrumentation to debug your code. You will also have fewer communication points that can potentially become out of sync or fail in different ways.
+
+This is not to say that layers are always unnecessary. We don't want to program large systems in assembly. But we do need to consciously and carefully weigh the cost to benefit ratio whenever we add an additional layer to our system.
+
+So what does this mean in a practical sense? Use low-level, compiled languages for servers such as Go. Avoid communication over network and HTTP whenever possible: prefer threads, processes, sockets, and lower level protocol frameworks such as ZeroMQ. Avoid ORMs and write queries directly. On the frontend, use vanilla Javascript with a strong understanding of the actual browser API, along with simple and small frameworks that have wide browser support. Avoid, if possible, complicated build processes, fail-prone package managers, and cross-compilation.
+
+!! Automated Testing
+
+Let's end with the obvious and most-discussed point: testing. Everyone talks about unit testing and test coverage. I actually want to ''de-emphasize'' automated testing, not because it doesn't work well, but because in the web world it is often emphasized over everything else. 
+
+Much of this is very common advice found everywhere, but I'll reiterate here as an easy reminder:
+
+* Code should be designed so it is easily importable and unit-testable in small modules that don't have large inter-dependencies
+* Unit tests should run very fast and be used as feedback loops when working
+* Integration tests should be easy to write, as inclusive as possible, and should hit as many pieces of the system as possible. These can be slow and only need to be run for deploys. 
+
+Not everything needs automated tests, especially things that are very difficult to automate, such as UI. You need to make sure that your return on investment in writing and maintaining the tests is worth it! You don't want to spend 90% of your time on it. Remember that manual QA of UI can still be very fast, is parallelizable, and is usually more thorough than anything automated.</pre>
 </div>
 <div created="20200915203133091" modified="20210112064544770" tags="tiddlywiki process" title="TiddlyWiki saving and loading">
 <pre>What I find to be the easiest and most streamlined method after lots of trial and error:
