@@ -281,6 +281,8 @@ Error message and password prompt
 
 <li>Mindful Computering</li>
 
+<li>Package management system</li>
+
 <li>Pie crust tips</li>
 
 <li>Robust code</li>
@@ -10203,7 +10205,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210212010208519" list="[[Robust code]] Hello" modified="20210212010208519" title="$:/StoryList">
+<div list="[[Package management system]] Hello" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10251,11 +10253,11 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1440&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10428,6 +10430,34 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]]</pre>
 * Use a countdown timer and timebox each task to something between 15 and 60 minutes. When the timer is up, turn your monitor off and step away from the computer for a few minutes to reset your mind.
 * On your task notepad, keep an area for an unfiltered brain dump, separate from actionable tasks. Here you can write down ideas, projects, and other vague topics. You can take ideas from your brain dump and turn them into specific, actionable tasks.
 * When in doubt, turn the monitor off and step away from the computer. Go outside, look into the distance, and allow yourself to think again from a higher altitude before going back into the computer world.</pre>
+</div>
+<div created="20210626220447113" modified="20210626220458854" tags="coding ideation" title="Package management system">
+<pre>This is a hypothetical package management system that might solve a lot of existing pain points. It is different enough from current systems that it (unfortunately) requires a new language or a heavy modification of some existing language. We assume that the language's code is compiled.
+
+!! Existing problems
+
+I aim to solve some of these existing problems with package management:
+
+* Overly complicated and error prone nested dependency trees
+* Breaking inexact versions of dependencies -- no good guarantee of code consistency from the dependencies
+* Reliance on fetching over HTTPS to build the codebase
+
+!! The proposal
+
+Code is organized into modules, which have a single strict type interface. Modules are identified by a unique key, which is the checksum or content hash of the code for the module. This checksum is computed over a normalized version of the module's code, where extra whitespace, formatting, and meaningless ordering is removed.
+
+When importing a module from within your code, you import based on its checksum, rather than any kind of path. The compiler is configured to look for dependency modules in a list of directories, similar to $PATH.
+
+In a directory containing modules, an index file lists the checksum values for every module in that directory. The index file is generated and checked by the compiler. 
+
+An additional dependency definition file, similar to a package.json, cargo.toml, setup.py, or go.mod lives in the project root. This file's only purpose is to conveniently document the original HTTPS source locations for every dependency in your project. Unlike other package management systems, the purpose of this file is only documentation of provenance.
+
+All dependency code is stored in the repo and compressed into a single archive. When the codebase is built and compiled, the dependencies are first extracted. This solves the problem of relying on unknown remote resources when building your project.
+
+Compression is not required. If the programmers want to see diffs for any change to dependencies, then compression can be skipped.
+
+A registry maps metadata to checksums for a list of modules. The registry may assign titles, descriptions, and groupings to modules based on their checksums. The registry also provides a server for downloading the module itself and extracting into your codebase. Your compiler can then verify the checksum and record the original URL for the module to the source definitions file.
+</pre>
 </div>
 <div created="20210112174934109" modified="20210112174946006" tags="food" title="Pie crust tips">
 <pre>Some tips when making pie crust:
