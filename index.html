@@ -289,6 +289,8 @@ Error message and password prompt
 
 <li>TiddlyWiki saving and loading</li>
 
+<li>TiddlyWiki-style ultra-minimal CMS</li>
+
 <li>Untitled</li>
 
 <li>Wiki Todos</li>
@@ -10205,7 +10207,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210701201940528" list="" modified="20210701201940528" title="$:/StoryList">
+<div list="Hello" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10584,6 +10586,53 @@ Not everything needs automated tests, especially things that are very difficult 
 # Publish your wiki via github pages to some URL
 # Access the wiki from that URL and add settings for saving via Github (your Github token won't be saved, but only cached in the browser)
 # Edit the wiki directly from the URL and save to Github. You can refresh all you want, and edit from any other computer as well.</pre>
+</div>
+<div created="20210701202221829" modified="20210701202241484" tags="ideation coding" title="TiddlyWiki-style ultra-minimal CMS">
+<pre>This is an idea for an ultra-minimal CMS inspired by TiddlyWiki with these features:
+
+* Very robust in-place editing with live changes
+* Very small amount of work to create the CMS
+* Almost no setup
+* Multiple backends
+
+This CMS would be useful for personal websites like blogs, portfolios, resumes, simple businesses, etc, but not for websites requiring templating or databases, such as ecommerce, etc. It would also require a minimum of HTML technical experience for editing (being able to use Chrome/Firefox devtools).
+ 
+The backend for the CMS could be many sources, such as S3, FTP server, etc. But for the prototype, we can just support local filesystem and Github Pages. Let's take Github Pages as our example.
+
+The user starts by creating a repo with a template index.html in the root, with Github pages enabled.
+
+The user goes to the URL of that page. They can start editing the page using Developer Tools in Chrome, Firefox, etc.
+
+When a change is made, a &quot;Save&quot; button pops up (using MutationObserver). When the user clicks on that button, they can enter a Github developer token, along with the URL and path for the repo (same as TiddlyWiki).
+
+The built-in javascript then gets the full page source with document.documentElement.outerHTML and writes it to Github (minifeid)
+
+The entire idea is to use Developer Tools as your in-place, real-time content management system for a single page website!
+
+Implementation path:
+
+* Create repo with HTML templates and builtin javascript that manages saving of the page
+* Create HTML templates in that repo for people to copy 
+* Create npm package with JS served on CDN
+* Get it working for my own landing page at jayrbolton.com and my resume
+
+Open questions:
+
+* If the template HTML loaded the builtin JS from a CDN, then we could dynamically update our JS to fix and improve functionality without people having to update 
+** Otherwise, the builtin js can go adjacent to the index HTML file in the repo. But then, we are not sure how to propagate functionality upgrades
+
+Extension features:
+
+* When saving, show a diff between the new HTML and the old
+** This could be done by leveraging Github diffing.
+*** After the save, could link the commit comparison page (this does not help with deciding whether to save)
+*** Before the save, a preview button could create a PR for you to view
+** Or use something like diff2html to generate the diff 
+** MutationObserver could even track a history of every single change (you made X changes and here is a diff for each one)
+*** This could also provide  undo and rollback functionality!!
+* When saving, save a copy of the previous HTML for backup to the repo
+* The builtin javascript and templating code can offer more features! We could add more functionality when needed.
+** For example, the management of a local database which is persisted inside the HTML, loaded on pageload into IndexedDB, and then rendered by Javascript into the page.</pre>
 </div>
 <div title="Untitled" type="text/plain">
 <pre>770px</pre>
