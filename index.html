@@ -275,6 +275,8 @@ Error message and password prompt
 
 <li>$:/view</li>
 
+<li>Frontend Architecture</li>
+
 <li>Hello</li>
 
 <li>Mindful Computering</li>
@@ -10252,11 +10254,11 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1792&quot;
+            &quot;text&quot;: &quot;1280&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1120&quot;
+            &quot;text&quot;: &quot;720&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10412,6 +10414,142 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 </div>
 <div created="20200915184723312" modified="20200915184739124" title="$:/view">
 <pre>classic</pre>
+</div>
+<div created="20210709011707212" modified="20210709193436121" tags="coding idea" title="Frontend Architecture">
+<pre>Here is an unimplemented architecture for a web-base frontend (user interface) architecture.
+
+A program has the following pieces
+
+* State
+** Application state
+** Component state
+* Components
+** Generic components
+** Application components
+
+A &quot;State&quot; is a javascript strictly typed data structure storing nested hash tables and arrays. It emits events when data is updated. It also allows data-less events, for actions such as button clicks. These events can trigger function calls. 
+
+''Application state'' is a single, effectively global State that encapsulates all the data specific for your application. This might include user session info after a login, or data loaded from a server to be displayed in a table on the page. This data is often loaded from and saved to remote servers over HTTP, and it can be cached in localStorage or IndexedDB.
+
+&quot;Component State&quot; uses the same kind of State as Application State, but these are nested, private, local data that track such things as whether is a dropdown is open or closed.
+
+''Components'' are functions representing UI elements such as dropdowns, tables, buttons, etc. They may read and write data from the application state, and they may also keep local state.
+
+A component is represented as a pair of `[element, state]` where `element` is a vanilla DOM Element object, and `state` is a State object.
+
+Components are organized into a strict tree hierarchy of function definitions and calls.
+
+''Generic components'' are components that do not read or write application state and only make use of local data. These can be reused in many places in your component hierarchy.
+
+''Application components'' read and write the Application State and may have generic components or other application components as their children.
+
+!! Events
+
+In order to make the system dynamic, State objects emit Events, which trigger additional function calls while the user is on the page.
+
+There are two types of events for a State object: 
+
+* An ''Update'' -- A piece of data has changed
+* An ''Action''  -- A single event in time with no associated data change (eg. button click)
+
+These two types of events are not mutually exclusive, and both might be triggered by the same behavior from the user. For example, when the user enters a value in a text field, then both a data Update and an Action (&quot;text field change&quot;) may fire at the same time.
+
+!! Project structure
+
+The function tree structure of application components should be reflected in the directory structure of the application. 
+
+Generic components should live in their own library folder.
+
+For example, the directory structure for a login page might look like:
+
+```
+pages/    (application components)
+  session/
+    index.ts  (Root login/signup page)
+    login/
+       index.ts   (child component of session)
+    signup/
+      index.ts  (child component of session)
+components/  (generic components)
+  form/    (used by both login &amp; signup)
+    submitButton.ts
+    input.ts
+    emailInput.ts
+    passwordInput.ts
+  formSubmitButton.ts
+  progressBar.ts
+lib/    (generic non-rendering functions)
+   validatePassword.ts
+```
+
+!! Example code
+
+```
+// Declare the data structure for the generic component state
+// Any child content should go in the state
+interface ButtonState {
+  disabled: Boolean,
+  children: [Elem],
+}
+
+function button (initial: ButtonState) {
+  const buttonState = State({
+    initial,
+    defaults: { disabled: false },
+    events: [&quot;click&quot;]
+  });
+  // Creates a vanilla DOM Element object using a helper function
+  const elem = Elem(&quot;button&quot;, {
+    props: {disabled: buttonState.data.disabled},
+  events: {
+    click: {
+      buttonState.trigger(&quot;click&quot;);
+    }
+  },
+  });
+
+  // Change elem based on state events
+  buttonState.onChange({
+    disabled: state =&gt; {
+       elem.props.disabled = state.disabled;
+    },
+    children: state =&gt; {
+      updateChildren(elem, state.children);
+    },
+  });
+
+  return [elem, buttonState];
+}
+
+// Extend styles through simple function composition
+function prettify (button: Elem) {
+  updateStyle(button, {
+    color: &quot;pink&quot;,
+    background: &quot;purple&quot;,
+  });
+  return button;
+}
+
+// Extend functionality through simple function composition
+function alertify (button: Elem) {
+  elem.extendHandlers({
+    click: () =&gt; alert(&quot;huh?&quot;),
+  });
+  return elem;
+}
+
+const myPrettyButton = alertify(prettify(button({
+  disabled: true,
+  text: &quot;Don't click me!&quot;,
+})));
+```
+
+!! Open questions
+
+* Maybe we want every possible property of an element to be part of its state? Eg. props, style, attributes, etc
+** We can achieve this through a function hierarchy, where all components extend a base state that includes and updates all the element properties
+* Since all dynamic behavior is based around callbacks, will we have memory problems?
+** Need to test and observe</pre>
 </div>
 <div created="20210112061936788" modified="20210701201946422" tags="" title="Hello">
 <pre>Welcome to my personal wiki! This is a work in progress...
