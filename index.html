@@ -285,6 +285,8 @@ Error message and password prompt
 
 <li>Pie crust tips</li>
 
+<li>Preventing Cross-Dependency Bugs</li>
+
 <li>Robust code</li>
 
 <li>The all-or-nothing fallacy</li>
@@ -10206,7 +10208,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Hello" title="$:/StoryList">
+<div list="[[Preventing Cross-Dependency Bugs]] Hello" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10607,6 +10609,27 @@ A registry maps metadata to checksums for a list of modules. The registry may as
 * Then, lay it out in the pan and chill it further
 * Blind bake the crust using weights on parchment paper (you can use uncooked beans)
 * Use a silicone pie crust guard during the second half of baking the pie with the filling</pre>
+</div>
+<div created="20210818195858409" modified="20210818201100931" tags="" title="Preventing Cross-Dependency Bugs">
+<pre>Perhaps the most common category of bugs in software is cross-dependency breakage, where a parent dependency changes its functionality, causing child modules to break.
+
+There are three techniques to help prevent this type of bug:
+
+# Create strongly type interfaces for each module, with tests, versioning, and changelogs
+# Be aware of the full dependency graph: what parent dependencies are used by what child modules; what child modules depend on what parent dependencies
+# Catch all breaking changes on any update to a parent dependency by being able to test all modules at once on any change
+
+Item (1) is simply a set of common practices for non-sloppy engineers who want to make robust libraries. Establishing and enforcing a strong type interface for the module, possibly with runtime type enforcement if performance allows. Using semantic versioning, keeping a changelog, and keeping full test coverage. All of this is software engineering 101.
+
+Items (2) and (3) are much less commonly addressed, but perhaps even more important. Item (1) alone does only a little towards preventing cross-dependency bugs without the other two items.
+
+You can go a long way addressing items (2) and (3) by putting your entire project into a single codebase. This allows you to traverse, grep, and visualize your dependency graph more easily. It prevents dependencies from becoming hidden (eg. a module in a separate repo, in a separate Github org, on a separate website, etc). 
+
+Having a single repo also allows you to run all tests for the entire codebase in one command on any change. If your tests are fast enough, you can re-run the tests for all modules on any change to parent dependency, which goes a long way to guaranteeing prevention of cross-dependency bugs.
+
+If your project is too massive to put into one repo, or too slow to run as a single test command, then you need to ask yourself why. Consider the useful computation that your project performs, and whether that computation is buried under layers of frameworks, network architecture, and virtual machines. All that extra overhead slows down and bulks up your project, and may have no real purpose.
+
+Your project should be able to run small examples with a small footprint. It should be able to scale up to larger examples with a larger footprint without affecting the architecture of the smaller examples.</pre>
 </div>
 <div created="20210210010537692" modified="20210212012119631" tags="process coding" title="Robust code">
 <pre>Here is my reference page of key, high-level concepts that I always return to when I am trying to make a robust, distributed (usually web) software system.
