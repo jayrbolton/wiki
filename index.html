@@ -281,6 +281,8 @@ Error message and password prompt
 
 <li>Mindful Computering</li>
 
+<li>Networked Process Scheduler</li>
+
 <li>Package management system</li>
 
 <li>Pie crust tips</li>
@@ -10208,7 +10210,7 @@ very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Preventing Cross-Dependency Bugs]] Hello" title="$:/StoryList">
+<div created="20211125192838335" list="[[Networked Process Scheduler]] Hello" modified="20211125193004179" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10570,6 +10572,29 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]]</pre>
 * On your task notepad, keep an area for an unfiltered brain dump, separate from actionable tasks. Here you can write down ideas, projects, and other vague topics. You can take ideas from your brain dump and turn them into specific, actionable tasks.
 * When in doubt, turn the monitor off and step away from the computer. Go outside, look into the distance, and allow yourself to think again from a higher altitude before going back into the computer world.</pre>
 </div>
+<div created="20211125193007247" modified="20211125202225285" tags="" title="Networked Process Scheduler">
+<pre>Similar to an OS process scheduler, but jobs run on different machines across the network.
+
+Inspirations for the design include Erlang-OTP and ZeroMQ. See [[Joe Armstrong's Dissertation about Erlang and OTP|https://erlang.org/download/armstrong_thesis_2003.pdf]] and also the [[Majordomo Specification from ZeroMQ|https://github.com/zeromq/majordomo]]
+
+A possible implementation strategy (particularly the broker) would be to use [[Go and mangos (nanomsg)|https://pkg.go.dev/go.nanomsg.org/mangos/v3]]
+
+* Clients send messages over HTTPS to a broker
+* The service names goes in a custom HTTP header, such as x-cph-service. Message content goes in the request body. Message content stays in memory and should be kept small.
+* Message content for queues could possibly be paged to disk (leveldb?). This could save memory and offer persistence. Maybe not necessary -- try without.
+* The broker keeps multiple queues, one per worker group
+* Workers handle the parsing and validation of messages
+* The broker is fast and dumb. It should queue and route messages and do nothing else. Throughput is paramount.
+* Broker clusters can be replicated. In this case, the clients simply need a list of broker URLs and can choose the one with lowest latency. Multiple broker clusters can coordinate on state by, for example, connecting to the same Postgres or S3 instance.
+
+A possible framework name  could be Cephalo (for cephalopods, because the architecture resembles octopuses)
+
+* Workers receive messages over a socket, and first parse and validate the messages
+* Workers have client libraries to assist in receiving messages
+* Workers may **fork** -- that is, they can start another job onthe broker and either continue working or wait for the job. They fork by simply making an HTTPS request to the broker like any other client.
+* If the worker waits for another job to finish, the worker will continue working on other jobs (probably just need IO threads)
+* Worker groups can scale indefinitely.</pre>
+</div>
 <div created="20210626220447113" modified="20210626220458854" tags="coding ideation" title="Package management system">
 <pre>This is a hypothetical package management system that might solve a lot of existing pain points. It is different enough from current systems that it (unfortunately) requires a new language or a heavy modification of some existing language. We assume that the language's code is compiled.
 
@@ -10610,12 +10635,12 @@ A registry maps metadata to checksums for a list of modules. The registry may as
 * Blind bake the crust using weights on parchment paper (you can use uncooked beans)
 * Use a silicone pie crust guard during the second half of baking the pie with the filling</pre>
 </div>
-<div created="20210818195858409" modified="20210818201100931" tags="" title="Preventing Cross-Dependency Bugs">
+<div created="20210818195858409" modified="20211125193001914" tags="" title="Preventing Cross-Dependency Bugs">
 <pre>Perhaps the most common category of bugs in software is cross-dependency breakage, where a parent dependency changes its functionality, causing child modules to break.
 
 There are three techniques to help prevent this type of bug:
 
-# Create strongly type interfaces for each module, with tests, versioning, and changelogs
+# Create strongly typed interfaces for each module, with tests, versioning, and changelogs
 # Be aware of the full dependency graph: what parent dependencies are used by what child modules; what child modules depend on what parent dependencies
 # Catch all breaking changes on any update to a parent dependency by being able to test all modules at once on any change
 
